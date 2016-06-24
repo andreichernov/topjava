@@ -6,6 +6,8 @@ import ru.javawebinar.topjava.repository.UserMealRepository;
 import ru.javawebinar.topjava.util.TimeUtil;
 import ru.javawebinar.topjava.util.UserMealsUtil;
 
+import java.util.Collection;
+import java.util.Map;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.*;
@@ -22,7 +24,6 @@ import static ru.javawebinar.topjava.repository.mock.InMemoryUserRepositoryImpl.
  */
 @Repository
 public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
-
     private static final Comparator<UserMeal> USER_MEAL_COMPARATOR = Comparator.comparing(UserMeal::getDateTime).reversed();
 
     // Map  userId -> (mealId-> meal)
@@ -74,7 +75,8 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     }
 
     @Override
-    public Collection<UserMeal> getBetween(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId) {
+    public Collection<UserMeal> getBetween(LocalDateTime startDateTime, LocalDateTime
+            endDateTime, int userId) {
         Objects.requireNonNull(startDateTime);
         Objects.requireNonNull(endDateTime);
         return getAll(userId).stream()
