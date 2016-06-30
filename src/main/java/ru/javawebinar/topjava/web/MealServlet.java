@@ -36,26 +36,12 @@ public class MealServlet extends HttpServlet {
         mealController = springContext.getBean(UserMealRestController.class);
     }
 
-        final UserMeal userMeal = new UserMeal(
     @Override
     public void destroy() {
         springContext.close();
         super.destroy();
     }
 
-    @Override
-    public void destroy() {
-        springContext.close();
-        super.destroy();
-    }
-
-        if (request.getParameter("id").isEmpty()) {
-            LOG.info("Create {}", userMeal);
-            mealController.create(userMeal);
-        } else {
-            LOG.info("Update {}", userMeal);
-            mealController.update(userMeal, getId(request));
-        }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
