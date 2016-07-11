@@ -50,6 +50,6 @@ public class InMemoryAdminRestControllerTest {
 
     @Test(expected = NotFoundException.class)
     public void testDeleteNotFound() throws Exception {
-        controller.delete(10);
+        controller.delete(0);
     }
 }
